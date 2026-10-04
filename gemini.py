@@ -1,11 +1,18 @@
+import gradio as gr
 from google import genai
+import time
 
 def gemini(message, chat_history, key):
-    if not message:
-        return "プロンプトを入力してください。", chat_history
-    
+
     if not key:
-        return "API keyを入力してください。", chat_history
+        gr.Warning("Gemini: API Keyを入力してください。")
+        time.sleep(1)
+        return "", chat_history
+    
+    if not message:
+        gr.Warning("Gemini: プロンプトを入力してください。")
+        time.sleep(1)
+        return "", chat_history
     
     with open('gemini_api_key.txt', 'w') as f:
         f.write(key)
