@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install -y python3 python3-venv python3-pip fonts-ipafont
+sudo apt install -y python3 python3-venv python3-pip
 
 echo "仮想環境を作成中..."
 if [ ! -d ".venv" ]; then
@@ -15,7 +15,7 @@ echo "pip を更新中..."
 python -m pip install --upgrade pip
 
 echo "google-genai と gradio をインストール中..."
-python -m pip install google-genai gradio python-dotenv
+python -m pip install google-genai gradio
 
 echo "アプリを起動中..."
 python app.py

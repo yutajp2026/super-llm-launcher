@@ -3,6 +3,7 @@ import gradio as gr
 import platform
 import gemini
 import os
+import time
 
 if os.path.exists('gemini_api_key.txt'):
     with open('gemini_api_key.txt', "r", encoding="utf-8") as f:
