@@ -15,7 +15,7 @@ echo "pip を更新中..."
 python -m pip install --upgrade pip
 
 echo "google-genai と gradio をインストール中..."
-python -m pip install google-genai gradio
+python -m pip install google-genai gradio openai
 
 echo "アプリを起動中..."
 python app.py

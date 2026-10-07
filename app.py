@@ -1,23 +1,38 @@
-import webbrowser
-import gradio as gr
-import platform
-import gemini
 import os
 import time
+import platform
+import webbrowser
+import gradio as gr
+import gemini
+import chatgpt
 
 if os.path.exists('gemini_api_key.txt'):
     with open('gemini_api_key.txt', "r", encoding="utf-8") as f:
         gemini_api_key = f.read()
 
+if os.path.exists('gpt_api_key.txt'):
+    with open('gpt_api_key.txt', "r", encoding="utf-8") as f:
+        gpt_api_key = f.read()
+
 with gr.Blocks() as demo:
     with gr.Tab("Gemini"):
-        gr.Markdown("# Gemini 3.8 Flash")
+        gr.Markdown("# Gemini 3.5 Flash")
         gr.Markdown("何かお手伝いできることはありますか？")
+        gr.Markdown("API keyを[ここ](https://aistudio.google.com/api-keys)から取得して、会話を始めましょう。")
         gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
         chatbot = gr.Chatbot()
         message = gr.Textbox(placeholder="Geminiに相談")
         api_key = gr.Textbox(label="API Key", value=gemini_api_key if os.path.exists('gemini_api_key.txt') else "", type="password")
         message.submit(gemini.gemini, [message, chatbot, api_key], [message, chatbot])
+    with gr.Tab("ChatGPT"):
+        gr.Markdown("# ChatGPT 6 Luna")
+        gr.Markdown("どこから始めますか？")
+        gr.Markdown("API keyを[ここ](https://platform.openai.com/api-keys)から取得して、会話を始めましょう。")
+        gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
+        chatbot = gr.Chatbot()
+        message = gr.Textbox(placeholder="ChatGPTに聞く")
+        api_key = gr.Textbox(label="API Key", value=gpt_api_key if os.path.exists('gpt_api_key.txt') else "", type="password")
+        message.submit(chatgpt.gpt, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("メニュー"):
         gr.Markdown("## サーバー")
         def quit():
