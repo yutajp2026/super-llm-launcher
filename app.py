@@ -26,7 +26,7 @@ with gr.Blocks() as demo:
         gr.Markdown("API keyを[ここ](https://aistudio.google.com/api-keys)から取得して、会話を始めましょう。")
         gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
         chatbot = gr.Chatbot()
-        message = gr.Textbox(placeholder="Geminiに相談")
+        message = gr.Textbox(label="Prompt", placeholder="Geminiに相談")
         api_key = gr.Textbox(label="API Key", value=gemini_api_key if os.path.exists('gemini_api_key.txt') else "", type="password")
         message.submit(gemini.gemini, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("ChatGPT"):
@@ -35,15 +35,16 @@ with gr.Blocks() as demo:
         gr.Markdown("API keyを[ここ](https://platform.openai.com/api-keys)から取得して、会話を始めましょう。")
         gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
         chatbot = gr.Chatbot()
-        message = gr.Textbox(placeholder="ChatGPTに聞く")
+        message = gr.Textbox(label="Prompt", placeholder="ChatGPTに聞く")
         api_key = gr.Textbox(label="API Key", value=gpt_api_key if os.path.exists('gpt_api_key.txt') else "", type="password")
         message.submit(chatgpt.gpt, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("Qwen"):
         gr.Markdown("# Qwen 3.8")
+        gr.Markdown("クウェンに聞いてみて、もっと知りたい。")
         gr.Markdown("API keyを[ここ](https://console.groq.com/keys)から取得して、会話を始めましょう。")
         gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
         chatbot = gr.Chatbot()
-        message = gr.Textbox()
+        message = gr.Textbox(label="Prompt")
         api_key = gr.Textbox(label="API Key", value=groq_api_key if os.path.exists('groq_api_key.txt') else "", type="password")
         message.submit(qwen.qwen, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("メニュー"):
