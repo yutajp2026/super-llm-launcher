@@ -44,7 +44,7 @@ with gr.Blocks() as demo:
         gr.Markdown("API keyを[ここ](https://console.groq.com/keys)から取得して、会話を始めましょう。")
         gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
         chatbot = gr.Chatbot()
-        message = gr.Textbox(label="Prompt")
+        message = gr.Textbox(label="Prompt", placeholder="今日はどのようにお手伝いできますか？")
         api_key = gr.Textbox(label="API Key", value=groq_api_key if os.path.exists('groq_api_key.txt') else "", type="password")
         message.submit(qwen.qwen, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("メニュー"):
