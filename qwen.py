@@ -30,7 +30,7 @@ def qwen(message, chat_history, key):
     chat_history.append({"role": "user", "content": message})
 
     response = client.responses.create(
-        messages=qwen_history,
+        input=qwen_history,
         model="qwen/qwen3.8-27b",
     )
 
