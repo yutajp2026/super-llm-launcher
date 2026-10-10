@@ -2,7 +2,7 @@ import gradio as gr
 from openai import OpenAI
 import time
 
-def gpt(message, chat_history, key):
+def gpt(message: str, chat_history: list[dict[str, str]], key: str) -> tuple[str, list[dict[str, str]]]:
     global gpt_history
     if not key:
         gr.Warning("ChatGPT: API Keyを入力してください。")

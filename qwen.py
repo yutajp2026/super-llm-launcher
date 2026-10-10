@@ -2,7 +2,7 @@ from openai import OpenAI
 import gradio as gr
 import time
 
-def qwen(message, chat_history, key):
+def qwen(message: str, chat_history: list[dict[str, str]], key: str) -> tuple[str, list[dict[str, str]]]:
     global qwen_history
     if not key:
         gr.Warning("Qwen: API Keyを入力してください。")

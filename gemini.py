@@ -2,7 +2,7 @@ import gradio as gr
 from google import genai
 import time
 
-def gemini(message, chat_history, key):
+def gemini(message: str, chat_history: list[dict[str, str]], key: str) -> tuple[str, list[dict[str, str]]]:
     global gemini_history
     if not key:
         gr.Warning("Gemini: API Keyを入力してください。")
