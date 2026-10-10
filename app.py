@@ -5,6 +5,8 @@ import webbrowser
 import gradio as gr
 import gemini
 import chatgpt
+import llama
+import qwen
 
 if os.path.exists('gemini_api_key.txt'):
     with open('gemini_api_key.txt', "r", encoding="utf-8") as f:
@@ -13,6 +15,10 @@ if os.path.exists('gemini_api_key.txt'):
 if os.path.exists('gpt_api_key.txt'):
     with open('gpt_api_key.txt', "r", encoding="utf-8") as f:
         gpt_api_key = f.read()
+
+if os.path.exists('groq_api_key.txt'):
+    with open('groq_api_key.txt', "r", encoding="utf-8") as f:
+        groq_api_key = f.read()
 
 with gr.Blocks() as demo:
     with gr.Tab("Gemini"):
@@ -33,6 +39,22 @@ with gr.Blocks() as demo:
         message = gr.Textbox(placeholder="ChatGPTに聞く")
         api_key = gr.Textbox(label="API Key", value=gpt_api_key if os.path.exists('gpt_api_key.txt') else "", type="password")
         message.submit(chatgpt.gpt, [message, chatbot, api_key], [message, chatbot])
+    with gr.Tab("Llama"):
+        gr.Markdown("# Llama 3.1 Instant")
+        gr.Markdown("API keyを[ここ](https://console.groq.com/keys)から取得して、会話を始めましょう。")
+        gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
+        chatbot = gr.Chatbot()
+        message = gr.Textbox()
+        api_key = gr.Textbox(label="API Key", value=groq_api_key if os.path.exists('groq_api_key.txt') else "", type="password")
+        message.submit(llama.llama, [message, chatbot, api_key], [message, chatbot])
+    with gr.Tab("Qwen"):
+        gr.Markdown("# Qwen 3.8")
+        gr.Markdown("API keyを[ここ](https://console.groq.com/keys)から取得して、会話を始めましょう。")
+        gr.Markdown("※エラーはバックエンドウィンドウに表示されます。")
+        chatbot = gr.Chatbot()
+        message = gr.Textbox()
+        api_key = gr.Textbox(label="API Key", value=groq_api_key if os.path.exists('groq_api_key.txt') else "", type="password")
+        message.submit(qwen.qwen, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("メニュー"):
         gr.Markdown("## サーバー")
         def quit():
