@@ -57,6 +57,11 @@ with gr.Blocks() as demo:
         quit_btn.click(fn=quit, inputs=[], outputs=[])
         gr.Markdown("# 製品について")
         gr.Markdown("https://github.com/yutajp2026/super-llm-launcher")
+        version = os.getenv("VERSION")
+        if version:
+            gr.Markdown("最新のバージョンは、上記GitHubページで確認できます。")
+            gr.Markdown("現在使用しているアプリのバージョン: " + version)
+            
 
 if platform.system() == "Windows":
     webbrowser.open('http://127.0.0.1:7860')
