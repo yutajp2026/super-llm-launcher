@@ -49,12 +49,20 @@ with gr.Blocks() as demo:
         message.submit(qwen.qwen, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("メニュー"):
         gr.Markdown("# サーバー")
-        def quit():
+        def quit(save_keys):
+            if not save_keys:
+                if os.path.exists('gemini_api_key.txt'):
+                    os.remove('gemini_api_key.txt')
+                if os.path.exists('gpt_api_key.txt'):
+                    os.remove('gpt_api_key.txt')
+                if os.path.exists('groq_api_key.txt'):
+                    os.remove('groq_api_key.txt')
             gr.Info("アプリケーション終了。タブは手動で閉じてください。")
             time.sleep(1)
             os._exit(0)
+        save_keys = gr.Checkbox(label="APIキーを保持", value=True, interactive=True)
         quit_btn = gr.Button("終了")
-        quit_btn.click(fn=quit, inputs=[], outputs=[])
+        quit_btn.click(fn=quit, inputs=[save_keys], outputs=[])
         gr.Markdown("# 製品について")
         gr.Markdown("https://github.com/yutajp2026/super-llm-launcher")
         version = os.getenv("VERSION")
