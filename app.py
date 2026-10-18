@@ -49,7 +49,7 @@ with gr.Blocks() as demo:
         message.submit(qwen.qwen, [message, chatbot, api_key], [message, chatbot])
     with gr.Tab("メニュー"):
         gr.Markdown("# サーバー")
-        def quit(save_keys):
+        def quit(save_keys: bool):
             if not save_keys:
                 if os.path.exists('gemini_api_key.txt'):
                     os.remove('gemini_api_key.txt')
