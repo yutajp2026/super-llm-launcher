@@ -1,8 +1,5 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install -y python3 python3-venv python3-pip
-
 echo "仮想環境を作成中..."
 if [ ! -d ".venv" ]; then
     python3 -m venv ".venv"
