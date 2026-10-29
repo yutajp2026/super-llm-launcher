@@ -24,7 +24,7 @@ Super LLM Launcher は、複数の大規模言語モデルを1つのアプリか
 
 # インストール
 ## Windows
-Releasesにインストーラを公開予定
+[Releases](https://github.com/yutajp2026/super-llm-launcher/releases)にインストーラを公開
 ## Linux
 1. 下記のコマンドでPythonとgitをインストール
 ```bash
