@@ -12,7 +12,7 @@ Super LLM Launcher は、複数の大規模言語モデルを1つのアプリか
   - Gradio をベースにした軽量なインターフェースを採用しています。
   - プロンプト入力欄とチャット履歴の表示が一目で確認できます。
 
-- APIキー
+- APIキー(以下2つはWindowsとLinuxのみ)
   - 直前に入力したAPIキーは自動でローカルファイルに保存されます。
   - アプリ終了時にAPIキーを保持するかどうかを選択できます。
 
@@ -25,6 +25,8 @@ Super LLM Launcher は、複数の大規模言語モデルを1つのアプリか
 # 試用
 [HF Space](https://yutajapan2026-llm-test.hf.space/)
 # インストール
+## Android
+[sll-android](https://github.com/yutajp2026/sll-android)
 ## Windows
 [Releases](https://github.com/yutajp2026/super-llm-launcher/releases)にインストーラを公開
 ## Linux
