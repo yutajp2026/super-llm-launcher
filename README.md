@@ -22,6 +22,8 @@ Super LLM Launcher は、複数の大規模言語モデルを1つのアプリか
 - ブラウザ起動の簡略化
   - アプリ起動時にローカルのブラウザURLを自動で開くため、すぐに利用を開始できます(Windowsのみ)。
 
+# 試用
+[HF Space](https://yutajapan2026-llm-test.hf.space/)
 # インストール
 ## Windows
 [Releases](https://github.com/yutajp2026/super-llm-launcher/releases)にインストーラを公開
