@@ -25,6 +25,7 @@ Super LLM Launcher は、複数の大規模言語モデルを1つのアプリか
 # 試用
 [HF Space](https://yutajapan2026-llm-test.hf.space/)
 # インストール
+Android、Windows、Linuxに対応します。
 ## Android
 [sll-android](https://github.com/yutajp2026/sll-android)
 ## Windows
